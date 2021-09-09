@@ -5,6 +5,7 @@ tags:
   - computer
 categories:
   - Blog
+link: https://tinypng.com
 ---
 
 

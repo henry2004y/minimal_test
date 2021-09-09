@@ -27,7 +27,7 @@ author: Hongyang Zhou
 论及湾区，怎能不谈遍布的科技公司。
 ￼
 在斯坦福游客接待中心的墙上，贴了一幅展示科技巨头分布的俯瞰图。这就是引领当今世界科技走向的前沿阵地。恰好有同学在Google photo上班，借着机会头一次到这家享誉世界的公司参观。
-![silicon-valley](../img/silicon-valley.jpg)
+![silicon-valley](../images/silicon-valley.jpg)
 
 饮食
 

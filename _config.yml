@@ -80,7 +80,7 @@ defaults:
     values:
       layout: single
       author_profile: true
-      read_time: true
+      read_time: false
       words_per_minute: 195
       comments: true
       share: true

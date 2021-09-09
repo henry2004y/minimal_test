@@ -28,7 +28,7 @@ remote_theme: mmistakes/minimal-mistakes
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
-timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: Europe/Helsinki
 
 include:
   - _pages
@@ -81,6 +81,7 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
+      words_per_minute: 195
       comments: true
       share: true
       related: true

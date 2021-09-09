@@ -13,7 +13,7 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Jingtian Log
+title: 景田日志
 email: hyzhou@umich.edu
 description: >- # this means to ignore newlines until "baseurl:"
   Hongyang Zhou's personal website
@@ -56,8 +56,8 @@ plugins:
 
 author:
   name   : "Hongyang Zhou"
-  avatar : "/assets/images/bio-photo.jpg"
-  bio    : "My awesome biography constrained to a sentence or two goes here."
+  avatar : "/assets/images/next-to-zion.png"
+  bio    : "灯火阑珊处，烟雨任平生，一笑作春温，料峭也无晴，竹杖且徐行。"
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"

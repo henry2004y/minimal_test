@@ -54,6 +54,9 @@ plugins:
   - jemoji
   - jekyll-include-cache
 
+atom_feed:
+  hide: true
+
 author:
   name   : "Hongyang Zhou"
   avatar : "/assets/images/next-to-zion.png"
@@ -85,6 +88,7 @@ defaults:
       comments: true
       share: true
       related: true
+      mathjax: true
   # _pages
   - scope:
       path: "_pages"

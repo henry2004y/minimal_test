@@ -39,18 +39,19 @@ and
 ## Example: Navigation
 
 Imagine you are sailing on the sea. At time \\( t_1 \\), you obtain the location \\( x_1 \\) and velocity \\( v_1 \\), such that you can estimate your new position after \\( \Delta t \\) at time \\( t_2 \\). Meanwhile, when you reach time \\( t_2 \\), you can measure your location and velocity again. What is then the optimal estimate of your actual location? Kalman filter.
-\[
-\widehat{x}_k = A \widehat{x}_{k-1} + B u_k + K_k(y_k - C(A \widehat{x}_{k-1} + B u_k) )
-\]
+
+$$
+\hat{x}_k = A \hat{x}_{k-1} + B u_k + K_k(y_k - C(A \hat{x}_{k-1} + B u_k) )
+$$
 is the posteriori estimate where
-\[
-\widehat{x}_k^- = A \widehat{x}_{k-1} + B u_k
-\]
+$$
+\hat{x}_k^- = A \hat{x}_{k-1} + B u_k
+$$
 is called a priori estimate. \\( y_k \\) is the measurement at step k.
 
 For the prediction part
 \\[\begin{eqnarray} 
-\widehat{x}_k^- &= A \widehat{x}_{k-1} + B u_k, \\\\
+\hat{x}_k^- &= A \hat{x}_{k-1} + B u_k, \\\\
 P_k^- &= A P_{k-1}A^T + Q,
 \end{eqnarray}\\]
 where \\( P_k^- \\) is the error covariance (which increases with steps). In a single state case, \\( P_k^- \\) is just the deviation of the prediction at step k.
@@ -58,7 +59,7 @@ where \\( P_k^- \\) is the error covariance (which increases with steps). In a s
 These precditions are then fed to the update step
 \\[\begin{eqnarray} 
 K_k &= \frac{P_k^- C^T}{CP_k^-C^T+R}, \\\\
-\widehat{x}_k &= \widehat{x}_k^- + K_k(y_k - C\widehat{x}_k^-), \\\\
+\hat{x}_k &= \hat{x}_k^- + K_k(y_k - C\hat{x}_k^-), \\\\
 P_k &= (I - K_k C)P_k^-,
 \end{eqnarray}\\]
 where C is just a linear coefficent in the relation between \\( y_k \\) and \\( x_k \\):
@@ -88,7 +89,7 @@ This is in essence exactly the same application as the human tracking in the mon
 
 We need to know the temperature at the center of the throttle \\( T_{in} \\) to control the fuel injection of the engine. However, the temperature is so high in the throttle such that it is impossible to put a sensor right inside the throttle. Instead, we have to measure it from outside and get \\( T_{ext} \\). How should we proceed?
 
-With prior knowledge, we can build a mathematical model with input fuel \\( w_{fuel} \\) and output \\( \widehat{T}_{in}, \widehat{T}_{ext} \\). However, the mathematical model is only an approximation to the real system, which is subject to uncertainties. Our goal here is to eliminate the difference between \\( T_{ext} \\) and \\( \widehat{T}_{ext} \\) so that \\( T_{in} \\) converges to \\( \widehat{T}_{ext} \\). This negative feedback loop is called _state observer_.
+With prior knowledge, we can build a mathematical model with input fuel \\( w_{fuel} \\) and output \\( \hat{T}_{in}, \hat{T}_{ext} \\). However, the mathematical model is only an approximation to the real system, which is subject to uncertainties. Our goal here is to eliminate the difference between \\( T_{ext} \\) and \\( \hat{T}_{ext} \\) so that \\( T_{in} \\) converges to \\( \hat{T}_{ext} \\). This negative feedback loop is called _state observer_.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/4OerJmPpkRg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 

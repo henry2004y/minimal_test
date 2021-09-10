@@ -38,7 +38,9 @@ and
 
 ## Example: Navigation
 
-Imagine you are sailing on the sea. At time \\( t_1 \\), you obtain the location \\( x_1 \\) and velocity \\( v_1 \\), such that you can estimate your new position after \\( \Delta t \\) at time \\( t_2 \\). Meanwhile, when you reach time \\( t_2 \\), you can measure your location and velocity again. What is then the optimal estimate of your actual location? Kalman filter.
+Imagine you are sailing on the sea. At time \\( t_1 \\), you obtain the location \\( x_1 \\) and velocity \\( v_1 \\), such that you can estimate your new position after \\( \Delta t \\) at time \\( t_2 \\). Meanwhile, when you reach time \\( t_2 \\), you can measure your location and velocity again. What is then the optimal estimate of your actual location? Kalman filter.[^1]
+
+[^1]: There is a bug for displaying LaTeX symbols like hat and widehat. I don't know how to fix it.
 
 $$
 \hat{x}_k = A \hat{x}_{k-1} + B u_k + K_k(y_k - C(A \hat{x}_{k-1} + B u_k) )
@@ -56,7 +58,7 @@ P_k^- &= A P_{k-1}A^T + Q,
 \end{eqnarray}\\]
 where \\( P_k^- \\) is the error covariance (which increases with steps). In a single state case, \\( P_k^- \\) is just the deviation of the prediction at step k.
 
-These precditions are then fed to the update step
+These predictions are then fed to the update step
 \\[\begin{eqnarray} 
 K_k &= \frac{P_k^- C^T}{CP_k^-C^T+R}, \\\\
 \hat{x}_k &= \hat{x}_k^- + K_k(y_k - C\hat{x}_k^-), \\\\
@@ -73,13 +75,13 @@ For a more general form which includes nonlinearity,
 x_k &= f(x_{k-1}, u_k) + w_k, \\
 y_k &= g(x_k) + v_k.
 \end{eqnarray}\\]
-However, note that the new difficulty here is that after nonlinear transformation, the original Gaussian distribution at step k-1 may not be Gaussian anymore, such that the Kalman filter may not converge. One first idea to overcome this issue is to use the extended Kalman filter (EKF), which linearize the system at each step.[^1] Obviously this won't work well if the system is intrinsically highly nonlinear.
+However, note that the new difficulty here is that after nonlinear transformation, the original Gaussian distribution at step k-1 may not be Gaussian anymore, such that the Kalman filter may not converge. One first idea to overcome this issue is to use the extended Kalman filter (EKF), which linearize the system at each step.[^2] Obviously this won't work well if the system is intrinsically highly nonlinear.
 
-[^1]: This is where all the Jacobians, either analytically or numerically, come up. And most importantly, the system must be differentiable.
+[^2]: This is where all the Jacobians, either analytically or numerically, come up. And most importantly, the system must be differentiable.
 
 A better approach is called _Unscented Kalman Filter_(UKF). Instead of approximating a nonlinear function, UKF approximates the probability distributions. The filter selects a minimal set of sample points such that their mean and covariance is the same as the probability distribution, and are symmetrically distributed around the mean. Then after the nonlinear transformation, the mean and covariance of the transformed sigma points are used to calculate the new state estimate.
 
-Another approach which is based on very similar concept is called _Particle Filter_. It also uses sample points, referred as "particles". A significant difference between Particle Filter and Unscented Kalman Filter is that it approximates any distribution function, not only restricted to Gaussian. This also indicates that it needs much more particles than UKF does.
+Another approach which is based on very similar concept is called _Particle Filter_ (or _Ensemble Kalman Filter_). It also uses sample points, referred as "particles". A significant difference between Particle Filter and Unscented Kalman Filter is that it approximates any distribution function, not only restricted to Gaussian. This also indicates that it needs much more particles than UKF does.
 
 This is in essence exactly the same application as the human tracking in the monitor videos. You measure location and speed; you predict the next location; you measure again and correct the results. However note that in the latter application, Kalman filter enables tracking the same person who may goes out of sight for a short period, which is also why it significantly improves the result.
 

@@ -39,27 +39,26 @@ and
 ## Example: Navigation
 
 Imagine you are sailing on the sea. At time \\( t_1 \\), you obtain the location \\( x_1 \\) and velocity \\( v_1 \\), such that you can estimate your new position after \\( \Delta t \\) at time \\( t_2 \\). Meanwhile, when you reach time \\( t_2 \\), you can measure your location and velocity again. What is then the optimal estimate of your actual location? Kalman filter.
-
-\\[
-\widehat{x}_k = A \widehat{x}_{k-1} + B u_k + K_k(y_k - C(A \widehat{x}_{k-1} + B u_k)) 
-\\]
+\[
+\widehat{x}_k = A \widehat{x}_{k-1} + B u_k + K_k(y_k - C(A \widehat{x}_{k-1} + B u_k) )
+\]
 is the posteriori estimate where
-\\[
+\[
 \widehat{x}_k^- = A \widehat{x}_{k-1} + B u_k
-\\]
+\]
 is called a priori estimate. \\( y_k \\) is the measurement at step k.
 
 For the prediction part
 \\[\begin{eqnarray} 
-\widehat{x}_k^- &= A \widehat{x}_{k-1} + B u_k, \\
+\widehat{x}_k^- &= A \widehat{x}_{k-1} + B u_k, \\\\
 P_k^- &= A P_{k-1}A^T + Q,
 \end{eqnarray}\\]
 where \\( P_k^- \\) is the error covariance (which increases with steps). In a single state case, \\( P_k^- \\) is just the deviation of the prediction at step k.
 
 These precditions are then fed to the update step
 \\[\begin{eqnarray} 
-K_k &= \frac{P_k^- C^T}{CP_k^-C^T+R}, \\
-\widehat{x}_k &= \widehat{x}_k^- + K_k(y_k - C\widehat{x}_k^-), \\
+K_k &= \frac{P_k^- C^T}{CP_k^-C^T+R}, \\\\
+\widehat{x}_k &= \widehat{x}_k^- + K_k(y_k - C\widehat{x}_k^-), \\\\
 P_k &= (I - K_k C)P_k^-,
 \end{eqnarray}\\]
 where C is just a linear coefficent in the relation between \\( y_k \\) and \\( x_k \\):

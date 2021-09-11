@@ -15,7 +15,7 @@ title: "Links"
 
 [Vlasiator.jl](https://henry2004y.github.io/Vlasiator.jl/dev/)
 
-[Batsrus.jl](https://henry2004y.github.io/Batsrus.jl/dev/])
+[Batsrus.jl](https://henry2004y.github.io/Batsrus.jl/dev/)
 
 [TestParticle.jl](https://henry2004y.github.io/TestParticle.jl/dev/)
 

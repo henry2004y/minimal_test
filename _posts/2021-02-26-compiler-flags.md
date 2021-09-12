@@ -43,4 +43,4 @@ On top of the previous two observations, I need to be really careful about the m
 ## Vlasiator
 
 However, even if I turn off all the optimization flags, Vlasiator still shows different result on different platforms.
-This indicates that there are even more hidden fact underneath.
+This indicates that there are even more hidden facts underneath.

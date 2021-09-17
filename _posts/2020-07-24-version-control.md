@@ -5,6 +5,7 @@ tags:
 categories:
   - Blog
 author: Hongyang Zhou
+last_modified_at: 2021-09-17
 ---
 
 I haven't considered myself a programmer until very recent years. As a proof of that, 08/28/2017 is the first day I use Git.
@@ -40,8 +41,16 @@ Often git may get confused about renaming files. Check [this StackOverflow discu
 
 ## Squashing commits
 
-Generally it is better to squeeze small commits before merging. Take a look at this post [Combining multiple commits before pushing](https://stackoverflow.com/questions/6934752/combining-multiple-commits-before-pushing-in-git).
+Generally it is better to squeeze small commits before merging, especially in a PR. Take a look at this post [Combining multiple commits before pushing](https://stackoverflow.com/questions/6934752/combining-multiple-commits-before-pushing-in-git).
 
+## Finding regression
+
+`git bisect` is a great tool for finding regression. Check [how to use git bisect](https://stackoverflow.com/questions/4713088/how-to-use-git-bisect).
+
+## Blaming
+
+`git blame` shows the modification history of a file. There are now built-in versions on GitHub and GitLab.
+ 
 ## Removing from history
 
 Removing a file completely from Git history requires extra care, which is described in [Removing sensitive data from a repository](https://docs.github.com/en/github/authenticating-to-github/removing-sensitive-data-from-a-repository).

@@ -51,3 +51,13 @@ last_modified_at: 2021-09-17
 最早上Python课的时候，我就玩过相关的GUI开发包，虽然很简陋，但是对我而言很新奇。18年我参加完ISSS13的workshop以后，对一个日本研究组开发的以教学为主要目的的PIC代码很感兴趣。当时这套代码是从Fortran改到MATLAB的，并且添加了个GUI，能调输入参数，也能实时监控输出，的确适合教学；但由于年代久远，GUI部分是用GUIDE写的，正巧App Designer刚出来不久，我借着东风把原始的代码改成了兼容App Designer的版本，大致了解了一个App的实现框架。20年底楚哥跟我抱怨过他老板写的MATLAB程序多么难用，我一看是个裸的脚本加上一个GUIDE的壳，框架好不好另说一没文档说明二没数据测试，也就放弃帮他改进了。如今的MATLAB App Designer明显是更加趋近于Java风格的，毕竟整个MATLAB的前端和可视化部分都是Java实现的。
 
 Julia中也有封装的一些做App或者图形化界面的包，比如GTK、Electron之类的，但是毕竟不是原生的支持有限，很容易碰壁。结合先前的经验，我也就没有继续探索下去。设计前端的界面真是个体力活，码农那么多，Java那么火，也是因为需要大量人力来完善面向普通用户的图形界面。新时代密集型劳动，码农称谓诚不欺我。
+
+---
+
+科学绘图有别于艺术绘画，但依旧可以拥有风格甚至幽默。[xkcd](https://xkcd.com/)就是一个风靡在PhD群体中的漫画库。在Matplotlib中使用`plt.xkcd()`，或者在PyPlot中使用`xkcd()`，你可能会惊讶地发现加入点小曲折的直线无意间消解了你过于规矩的焦虑：
+
+<img src="https://imgs.xkcd.com/comics/real_programmers.png" alt="">
+
+<img src="https://imgs.xkcd.com/comics/curve_fitting.png" alt="">
+
+<img src="https://imgs.xkcd.com/comics/pie_charts.png" alt="">

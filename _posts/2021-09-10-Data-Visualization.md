@@ -54,7 +54,7 @@ Julia中也有封装的一些做App或者图形化界面的包，比如GTK、Ele
 
 ---
 
-科学绘图有别于艺术绘画，但依旧可以拥有风格甚至幽默。[xkcd](https://xkcd.com/)就是一个风靡在PhD群体中的漫画库。在Matplotlib中使用`plt.xkcd()`，或者在PyPlot中使用`xkcd()`，你可能会惊讶地发现加入点小曲折的直线无意间消解了你过于规矩的焦虑：
+科学绘图有别于艺术绘画，但依旧可以拥有风格甚至幽默。[xkcd](https://xkcd.com/)就是一个风靡在PhD群体中的漫画库。在Matplotlib中使用`plt.xkcd()`，或者在PyPlot中使用`xkcd()`，你可能会惊讶地发现加入点小曲折的线段无意间消解了你过于规矩的焦虑：
 
 <img src="https://imgs.xkcd.com/comics/real_programmers.png" alt="">
 

@@ -27,4 +27,6 @@ title: "Links"
 
 [1D PIC in Julia](https://github.com/henry2004y/kempo)[^1]
 
-[^1]: this repo may currently be private.
+[Working on Clusters](https://github.com/henry2004y/ScriptingNotes/blob/main/cluster/Clusters.md)[^1]
+
+[^1]: thes repos may currently be private.

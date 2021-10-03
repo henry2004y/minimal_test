@@ -5,10 +5,10 @@ tags:
 categories:
   - Blog
 author: Hongyang Zhou
-last_modified_at: 2021-09-17
+last_modified_at: 2021-10-03
 ---
 
-I haven't considered myself a programmer until very recent years. As a proof of that, 08/28/2017 is the first day I use Git.
+I haven't considered myself a programmer until very recent years. As a proof of that, 2017/08/28 is the first day I use Git.
 My experience of using a version control system started with CVS, a centralized management tool.
 Before mid 2019, our research group were using CVS for version control.
 The adopted concept is that there is one and only one branch on the server, and everyone commits to that.
@@ -31,15 +31,23 @@ Besides, I have some other opinions. The key concept behind Git is its distribut
 
 So now when you go back and revisit this story of Git, you can feel the importance of vision for the future. New things are born because we are tired of the old ones. The popularity of Git and its workflow has a reason.
 
-By the way, for a serious project, NEVER push directly to the master branch. There are all kinds of tool to do automated testing before you are confident about the changes.
+By the way, for a serious project, **NEVER push directly to the master branch**. There are all kinds of tool to do automated testing before you are confident about the changes.
 
-With all that being said, git is still not perfect. Recently I was confused about the usage of `git rebase`, so I did a Google search on the topic. Both of them are used for merging branches, but the differences are summarized [here](https://www.perforce.com/blog/vcs/git-rebase-vs-merge-which-better). Based on my current understanding, rebase is better than merge if you know what you are doing.
+With all that being said, git is still not perfect. Recently I was confused about the usage of `git rebase`, so I did a search on the topic. Both `merge` and `rebase` are used for merging branches, but the differences are summarized [here](https://www.perforce.com/blog/vcs/git-rebase-vs-merge-which-better). Based on my current understanding, `rebase` is better than merge for local unpublished commits; `rebase` may create a disaster in conflicts if being used on commits that are already pushed/shared on a remote repository![^1]
+
+[^1]: Practically Gabor's forced usage of `rebase` only works if you have a single branch to work on. Do not make it the default synchronizing behavior!
+
+## Adding
+
+The first principle of commits is one thing at a time. For instance, if you have two independent changes in a file, the basic `git -add file` will list both changes togther. A more advanced way is `git -p add file`: this allows you to go through all the changes and decide whether they belong to the same topic!
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Uszj_k0DGsg?start=90" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Renaming
 
 Often git may get confused about renaming files. Check [this StackOverflow discussion](https://stackoverflow.com/questions/433111/how-to-make-git-mark-a-deleted-and-a-new-file-as-a-file-move) and the trick of using `git log --follow` in [Follow the History of renamed files](https://kgrz.io/use-git-log-follow-for-file-history.html).
 
-## Squashing commits
+## Squashing
 
 Generally it is better to squeeze small commits before merging, especially in a PR. Take a look at this post [Combining multiple commits before pushing](https://stackoverflow.com/questions/6934752/combining-multiple-commits-before-pushing-in-git).
 
@@ -49,8 +57,37 @@ Generally it is better to squeeze small commits before merging, especially in a 
 
 ## Blaming
 
-`git blame` shows the modification history of a file. There are now built-in versions on GitHub and GitLab.
- 
+`git blame` shows the modification history of a file. There are now built-in GUI supports on GitHub and GitLab.
+
+## Resolving conflicts
+
+### When does conflicts may occur
+
+* `git merge`
+* `git rebase`
+* `git pull`
+* `git cherry-pick`
+* `git stash apply`
+
+### How to undo a conflict and start over
+
+You can always undo and start fresh!
+
+```shell
+git merge --abort
+```
+
+```shell
+git rebase --abort
+```
+
+### How to solve a conflict
+
+Simply clean up the file!
+```shell
+git mergetool
+```
+
 ## Removing from history
 
 Removing a file completely from Git history requires extra care, which is described in [Removing sensitive data from a repository](https://docs.github.com/en/github/authenticating-to-github/removing-sensitive-data-from-a-repository).
@@ -89,7 +126,7 @@ Similar situation is being described [here](https://stackoverflow.com/questions/
 Learn from yours and others' mistakes!
 
 Here is the suggested workflow.
-"Working off a branch" usually means you 
+"Working off a branch" usually means you
 1. clone a repository, e.g. `git clone http://repository`
 2. check out the branch you're interested in `git checkout awesome-branchname`,
 3. and create a new branch based of that `git checkout -b new-even-more-awesome-branch-name`

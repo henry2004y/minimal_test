@@ -5,6 +5,7 @@ tags:
   - computer
 categories:
   - Blog
+last_modified_at: 2021-10-07
 ---
 
 When using properly, command line is often the easiest and fastest way to get tasks done, even though the same thing can be also accomplished in other ways like using Python, Perl, etc..
@@ -13,13 +14,13 @@ Many useful little tricks can be found on the internet. I will collect some of t
 * `scp` with regular expression
 
 It is not guaranteed that the terminal you use can recognize regular expression on the remote machine. The magic here is
-```
+```sh
 scp "user@machine:/path/[regex here]" .
 ```
 
 * Find and replace text within files
 
-```
+```sh
 sed -i 's/original/new/g' file.txt
 ```
 Explanation:
@@ -36,27 +37,80 @@ Explanation:
 
 * Monitor log file in real time
 
-```
+```sh
 tail -f log
 ```
 
 This works, but the downside is that `tail` reads the whole file into buffer. As an alternative, using `less` is a more elegant approach:
-```
+```sh
 less +F log
 ```
 
 * Return the last n modified file in directory in time order:
-```
+```sh
 ls -Art | tail -n 1
 ```
 or in reverse order:
-```
+```sh
 ls -t | head -n 1
 ```
 
-* Pipe selected files into tar:
+* Pipe selected files into tar
 ```
 ls -Art | tail -n 5 | tar czvf out.tar.gz -T -
 ```
 
-Many more to be added later!
+* Avoid file auto purge
+On many file systems, there may be some rules for file housekeeping. One trick to avoid it is to touch each and every file in the repository. This can be done through the following command:
+```sh
+find /home/example -exec touch {} \;
+```
+
+* Check missing sequence files
+
+Assume the files share the pattern `FILE_DDD.txt`.
+Version 1:
+```sh
+for i in {1..14}
+do
+seq=`printf "%03d" $i`
+if [ ! -f "FILE_${seq}.txt" ]
+then
+echo "FILE_${i}.txt"
+fi
+done
+```
+
+Assume a series of files with numbers indicating the day of a year and the hour of day:
+> GLDAS_NOAH025SUBP_3H.A2003001.0000.001.2015210044609.pss.grb
+> GLDAS_NOAH025SUBP_3H.A2003001.0600.001.2015210044609.pss.grb
+> GLDAS_NOAH025SUBP_3H.A2003001.1200.001.2015210044609.pss.grb
+> GLDAS_NOAH025SUBP_3H.A2003001.1800.001.2015210044609.pss.grb
+
+```sh
+for a in file_{001..365}.{00..18..6}.txt 
+do  
+  [[ -f $a ]] || echo "$a"
+done
+```
+
+Assume just number ordering:
+```sh
+ub=1000 # Replace this with the largest existing file's number.
+seq "$ub" | while read -r i; do
+    [[ -f "$i.txt" ]] || echo "$i.txt is missing"
+done
+```
+
+Someone suggested `awk`, but I am not familiar with it at all.
+
+* List file names using regular expression
+
+Example: finding files within sequence and deleting
+```sh
+ls | grep -P "^08[5-9].*[0-9]" | xargs -d "\n" rm
+```
+
+---
+
+Many more to be added later! Some additional private notes on scripting are listed in [this repo](https://github.com/henry2004y/ScriptingNotes).

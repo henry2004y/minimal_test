@@ -9,7 +9,9 @@ last_modified_at: 2021-10-07
 ---
 
 When using properly, command line is often the easiest and fastest way to get tasks done, even though the same thing can be also accomplished in other ways like using Python, Perl, etc..
-Many useful little tricks can be found on the internet. I will collect some of them here.
+Many useful little tricks can be found on the internet. I have collected some of them here.
+
+---
 
 * `scp` with regular expression
 
@@ -25,7 +27,7 @@ sed -i 's/original/new/g' file.txt
 ```
 Explanation:
 
-  * `sed` = Stream EDitor
+  * `sed` = Stream Editor
   * `-i` = in-place (i.e. save back to the original file)
   * The command string:
     * `s` = the substitute command
@@ -106,9 +108,14 @@ Someone suggested `awk`, but I am not familiar with it at all.
 
 * List file names using regular expression
 
-Example: finding files within sequence and deleting
+*Example 1*: finding files within sequence and deleting
 ```sh
 ls | grep -P "^08[5-9].*[0-9]" | xargs -d "\n" rm
+```
+
+*Example 2*
+```sh
+find your-directory/ -name 'A*[0-9][0-9]' -delete
 ```
 
 ---

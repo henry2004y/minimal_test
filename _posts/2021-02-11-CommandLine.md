@@ -20,7 +20,7 @@ It is not guaranteed that the terminal you use can recognize regular expression 
 scp "user@machine:/path/[regex here]" .
 ```
 
-* Find and replace text within files
+* Finding and replacing text within files
 
 ```sh
 sed -i 's/original/new/g' file.txt
@@ -37,7 +37,7 @@ Explanation:
   * `file.txt` = the file name
 ```
 
-* Monitor log file in real time
+* Monitoring log file in real time
 
 ```sh
 tail -f log
@@ -48,7 +48,7 @@ This works, but the downside is that `tail` reads the whole file into buffer. As
 less +F log
 ```
 
-* Return the last n modified file in directory in time order:
+* Returning the last n modified file in directory in time order:
 ```sh
 ls -Art | tail -n 1
 ```
@@ -57,18 +57,18 @@ or in reverse order:
 ls -t | head -n 1
 ```
 
-* Pipe selected files into tar
+* Piping selected files into tar
 ```
 ls -Art | tail -n 5 | tar czvf out.tar.gz -T -
 ```
 
-* Avoid file auto purge
+* Avoiding file auto purge
 On many file systems, there may be some rules for file housekeeping. One trick to avoid it is to touch each and every file in the repository. This can be done through the following command:
 ```sh
 find /home/example -exec touch {} \;
 ```
 
-* Check missing sequence files
+* Checking missing sequence files
 
 Assume the files share the pattern `FILE_DDD.txt`.
 Version 1:
@@ -116,6 +116,17 @@ ls | grep -P "^08[5-9].*[0-9]" | xargs -d "\n" rm
 *Example 2*
 ```sh
 find your-directory/ -name 'A*[0-9][0-9]' -delete
+```
+
+* Removing prefix from files
+
+<script src="https://gist.github.com/larshaendler/3c477182717d32a4fc64070c283d24ad.js"></script>
+
+* Changing file extensions
+```sh
+for f in *.html; do
+    mv -- "$f" "${f%.html}.php"
+done
 ```
 
 ---

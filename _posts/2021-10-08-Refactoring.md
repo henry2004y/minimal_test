@@ -38,7 +38,7 @@ What is it that makes programs hard to work with?
 2. Changing the program in small steps, so it's easy to trace bugs. Follow the rhythm: test, small change, test, small change...
 3. Never be afraid to rename things for clarity, especially internally[^2].
 
-[^2]: 对于某些冥顽不化抱残守缺的码农，祝你好运。
+[^2]: 对于某些冥顽不化抱残守缺的码农，祝你好运。哦对了，Analysator至今的调用方式还是`import pytools`:sweat_smile:
 
 Most refactorings reduce the amount of code. If you happen to have one which increases it, think twice.
 

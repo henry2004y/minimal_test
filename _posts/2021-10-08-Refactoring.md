@@ -5,6 +5,7 @@ tags:
 categories:
   - Blog
 author: Hongyang Zhou
+last_modified_at: 2021-10-09
 ---
 
 所谓refactoring，指的是在不改变程序外部功能的情况下对内部结构进行优化调整，
@@ -91,6 +92,7 @@ One live example quoted from the book:
 ### Bad Smells in Code
 
 * Duplication
+  * 我自己最常干这种事情是在写画图脚本的时候。当你一次性想画多张图的时候，你会很容易先画一个，然后复制粘贴改个变量名就弄出多个。然而事后你会发现这种做法是多么不利于代码的反复利用和阅读。引以为戒。
 * Long method
 * Large class
 * Long parameter list
@@ -100,3 +102,6 @@ One live example quoted from the book:
 * Comments: many are misused as deodorant. It's surprising how often you look at thickly commented code and notice that the comments are there because the code is bad.
   * 最近的一个例子，Vlasiator中fix initial and boundary velocity block counts不一样的问题。之所以需要一大段注释，是因为代码本身逻辑混乱。
   * A good time to use a comment is when you don't know what to do, but not explain why you do poorly.
+
+Here is a live example in Python 3.9 for bad smell in code:
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/LrtnLEkOwFE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

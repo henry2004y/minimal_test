@@ -5,7 +5,7 @@ tags:
 categories:
   - Blog
 author: Hongyang Zhou
-last_modified_at: 2021-10-03
+last_modified_at: 2021-10-09
 ---
 
 I haven't considered myself a programmer until very recent years. As a proof of that, 2017/08/28 is the first day I use Git.
@@ -39,7 +39,7 @@ With all that being said, git is still not perfect. Recently I was confused abou
 
 ## Adding
 
-The first principle of commits is one thing at a time. For instance, if you have two independent changes in a file, the basic `git -add file` will list both changes togther. A more advanced way is `git -p add file`: this allows you to go through all the changes and decide whether they belong to the same topic!
+The first principle of commits is one thing at a time. For instance, if you have two independent changes in a file, the basic `git -add file` will list both changes togther. A more advanced way is `git add -p file`: this allows you to go through all the changes and decide whether they belong to the same topic!
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Uszj_k0DGsg?start=90" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 

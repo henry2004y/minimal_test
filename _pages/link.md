@@ -29,4 +29,6 @@ title: "Links"
 
 [Working on Clusters](https://github.com/henry2004y/ScriptingNotes/blob/main/cluster/Clusters.md)[^1]
 
+[Vlasiator: simulating near-Earth space with high-performance computing](https://space-travel.blog/vlasiator-d4929b68d27b)
+
 [^1]: thes repos may currently be private.

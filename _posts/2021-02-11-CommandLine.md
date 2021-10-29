@@ -5,7 +5,7 @@ tags:
   - computer
 categories:
   - Blog
-last_modified_at: 2021-10-07
+last_modified_at: 2021-10-29
 ---
 
 When using properly, command line is often the easiest and fastest way to get tasks done, even though the same thing can be also accomplished in other ways like using Python, Perl, etc..
@@ -13,18 +13,20 @@ Many useful little tricks can be found on the internet. I have collected some of
 
 ---
 
-* `scp` with regular expression
+## `scp` with regular expression
 
 It is not guaranteed that the terminal you use can recognize regular expression on the remote machine. The magic here is
+
 ```sh
 scp "user@machine:/path/[regex here]" .
 ```
 
-* Finding and replacing text within files
+## Finding and replacing text within files
 
 ```sh
 sed -i 's/original/new/g' file.txt
 ```
+
 Explanation:
 
   * `sed` = Stream Editor
@@ -35,43 +37,50 @@ Explanation:
     * `new` = the text to replace it with
     * `g` = global (i.e. replace all and not just the first occurrence)
   * `file.txt` = the file name
-```
 
-* Monitoring log file in real time
+## Monitoring log file in real time
 
 ```sh
 tail -f log
 ```
 
 This works, but the downside is that `tail` reads the whole file into buffer. As an alternative, using `less` is a more elegant approach:
+
 ```sh
 less +F log
 ```
 
-* Returning the last n modified file in directory in time order:
+## Returning the last n modified file in directory in time order:
+
 ```sh
 ls -Art | tail -n 1
 ```
+
 or in reverse order:
+
 ```sh
 ls -t | head -n 1
 ```
 
-* Piping selected files into tar
+## Piping selected files into tar
+
 ```
 ls -Art | tail -n 5 | tar czvf out.tar.gz -T -
 ```
 
-* Avoiding file auto purge
+## Avoiding file auto purge
 On many file systems, there may be some rules for file housekeeping. One trick to avoid it is to touch each and every file in the repository. This can be done through the following command:
+
 ```sh
 find /home/example -exec touch {} \;
 ```
 
-* Checking missing sequence files
+## Checking missing sequence files
 
 Assume the files share the pattern `FILE_DDD.txt`.
-Version 1:
+
+*Example 1*:
+
 ```sh
 for i in {1..14}
 do
@@ -90,13 +99,16 @@ Assume a series of files with numbers indicating the day of a year and the hour 
 > GLDAS_NOAH025SUBP_3H.A2003001.1800.001.2015210044609.pss.grb
 
 ```sh
-for a in file_{001..365}.{00..18..6}.txt 
-do  
+for a in file_{001..365}.{00..18..6}.txt
+do
   [[ -f $a ]] || echo "$a"
 done
 ```
 
+Note the usages of `..` in the above examples. This is very useful to generate a continous list of strings
+
 Assume just number ordering:
+
 ```sh
 ub=1000 # Replace this with the largest existing file's number.
 seq "$ub" | while read -r i; do
@@ -106,23 +118,26 @@ done
 
 Someone suggested `awk`, but I am not familiar with it at all.
 
-* List file names using regular expression
+## List file names using regular expression
 
 *Example 1*: finding files within sequence and deleting
+
 ```sh
 ls | grep -P "^08[5-9].*[0-9]" | xargs -d "\n" rm
 ```
 
 *Example 2*
+
 ```sh
 find your-directory/ -name 'A*[0-9][0-9]' -delete
 ```
 
-* Removing prefix from files
+## Removing prefix from files
 
 <script src="https://gist.github.com/larshaendler/3c477182717d32a4fc64070c283d24ad.js"></script>
 
-* Changing file extensions
+## Changing file extensions
+
 ```sh
 for f in *.html; do
     mv -- "$f" "${f%.html}.php"

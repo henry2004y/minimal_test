@@ -5,7 +5,7 @@ tags:
 categories:
   - Blog
 author: Hongyang Zhou
-last_modified_at: 2021-10-09
+last_modified_at: 2021-11-12
 ---
 
 I haven't considered myself a programmer until very recent years. As a proof of that, 2017/08/28 is the first day I use Git.
@@ -84,6 +84,7 @@ git rebase --abort
 ### How to solve a conflict
 
 Simply clean up the file!
+
 ```shell
 git mergetool
 ```
@@ -95,13 +96,17 @@ Removing a file completely from Git history requires extra care, which is descri
 Remember to tell your collaborators working on their local branches to rebase from origin/master by `git pull --rebase` instead of `git pull`. Otherwise one merge commit could reintroduce some or all of the tainted history that you just went to the trouble of purging!
 
 Sometimes you may want to remove file from the repository but keep it locally. This can be achieved by
+
 ```shell
 git rm --cached -r somedir
 ```
+
 Will stage the deletion of the directory, but doesn't touch anything on disk. This works also for a file, like:
+
 ```shell
 git rm --cached somefile.ext
 ```
+
 Afterwards you may want to add `somedir/` or `somefile.txt` to your `.gitignore` file so that git doesn't try to add it back.
 
 
@@ -127,16 +132,19 @@ Learn from yours and others' mistakes!
 
 Here is the suggested workflow.
 "Working off a branch" usually means you
+
 1. clone a repository, e.g. `git clone http://repository`
 2. check out the branch you're interested in `git checkout awesome-branchname`,
 3. and create a new branch based of that `git checkout -b new-even-more-awesome-branch-name`
 
 Beyond that, you also need to
+
 1. [configure the remote for your fork](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/configuring-a-remote-for-a-fork)
 2. [sync your fork](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/syncing-a-fork)
 3. [rebase your development branch](https://gist.github.com/Chaser324/ce0505fbed06b947d962#cleaning-up-your-work)
 
 Additionally, it would be better if you squeeze your small commits into large ones with concise messages, and push to remote like this:
+
 ```shell
 git checkout my_branch
 git reset --soft HEAD~4
@@ -151,6 +159,10 @@ As with many peer review projects, pull requests take a long time in the queue w
 Handle the situation wisely to save your time and effort!
 
 Here is an excellent [guidance for what to do on GitHub](https://gist.github.com/Chaser324/ce0505fbed06b947d962).
+
+## GitHub
+
+In Fall 2021, GitHub disabled direct command line push through HTTPS even if you are the owner. They introduced a new authentication key which only shows up once and has a limited available time. Now the recommended way to connect to GitHub is through SSH. Follow the steps in [Q&A](https://stackoverflow.com/questions/60757334/git-push-from-vs-code-no-anonymous-write-access-authentication-failed) to setup the SSH connection to GitHub.
 
 ## Resources
 

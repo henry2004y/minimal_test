@@ -104,4 +104,4 @@ Two synthetic time-series were created. The two time-series, s1 (Figure 2A) and 
 
 ## Wavelets in Julia
 
-The main package for wavelet in Julia is [Wavelets.jl](https://github.com/JuliaDSP/Wavelets.jl). Note that as of version 0.9.3, this package only support discrete wavelet tranform. As an extension, [ContinuousWavelets.jl](https://github.com/UCD4IDS/ContinuousWavelets.jl) implements the continuous wavelet transform, with some examples of scalograms as well. I'm contacting the authors to see if it's possible to extend the package even further.
+The main package for wavelet in Julia is [Wavelets.jl](https://github.com/JuliaDSP/Wavelets.jl). Note that as of version 0.9.3, this package only supports discrete wavelet tranform. As an extension, [ContinuousWavelets.jl](https://github.com/UCD4IDS/ContinuousWavelets.jl) implements the continuous wavelet transform, with some examples of scalograms as well. I'm contacting the authors to see if it's possible to extend the package even further.

@@ -66,8 +66,20 @@ Two synthetic time-series were created. The two time-series, s1 (Figure 2A) and 
 
 ## Discriminate the Properties of Time-Series
 
-[Torrence and Compo, 1998](https://doi.org/10.1175/1520-0477(1998)079<0061:APGTWA>2.0.CO;2) have demonstrated that, *each point of the WT spectrum is statistically distributed as a chi-square with two degrees of freedom*. The confidence level is computed as the product of the background spectrum (the power at each scale) by the desired significance level from the chi-square ($\chi^2$) distribution. When the WT spectrum is higher than the associated confidence level it is said to be “statistically significant.” Following this statistical test, we can obtain what is usually known as *the cone of influence*, which is the region under the thin black lines in Figure 1. See the [MATLAB documentation](https://se.mathworks.com/help/wavelet/ref/conofinf.html) for a live example.
+Following the [statistical test]({{ site.baseurl }}{% post_url 2021-11-15-wavelet#statistical-test %}), we can obtain what is usually known as *the cone of influence*, which is the region under the thin black lines in Figure 1.
 
-## Wavelets in Julia
+## Tools
 
-The main package for wavelet in Julia is [Wavelets.jl](https://github.com/JuliaDSP/Wavelets.jl). Note that as of version 0.9.3, this package only supports discrete wavelet tranform. As an extension, [ContinuousWavelets.jl](https://github.com/UCD4IDS/ContinuousWavelets.jl) implements the continuous wavelet transform, with some examples of scaleograms as well. I'm contacting the authors to see if it's possible to extend the package even further.
+### MATLAB
+
+MATLAB's wavelet toolbox provides [wcoherence](https://se.mathworks.com/help/wavelet/ref/wcoherence.html) for computing the cross-wavelet tranform. The key formula is
+
+\\[
+\frac{| S(C_x^\ast(a,b) C_y(a,b) ) |^2}{S(| C_x(a,b) |^2)\cdot S(| C_y(a,b) |^2)}
+\\]
+
+where \\( C_x(a,b) \\) and \\( C_y(a,b) \\) denote the continuous wavelet transforms of x and y at scales a and positions b. The superscript * is the complex conjugate and S is a smoothing operator in time and scale.
+
+### Julia
+
+Waiting for magic to happen in [ContinuousWavelets.jl](https://github.com/UCD4IDS/ContinuousWavelets.jl/issues/22).

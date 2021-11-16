@@ -66,7 +66,7 @@ Two synthetic time-series were created. The two time-series, s1 (Figure 2A) and 
 
 ## Discriminate the Properties of Time-Series
 
-Following the [statistical test]({{ site.baseurl }}{% post_url 2021-11-15-wavelet#statistical-test %}), we can obtain what is usually known as *the cone of influence*, which is the region under the thin black lines in Figure 1.
+Following the statistical test described in [Wavelet Transform]({{ site.baseurl }}{% post_url 2021-11-15-wavelet %}), we can obtain what is usually known as *the cone of influence*, which is the region under the thin black lines in Figure 1.
 
 ## Tools
 

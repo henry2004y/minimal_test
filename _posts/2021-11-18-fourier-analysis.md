@@ -5,6 +5,7 @@ tags:
 categories:
   - Blog
 author: Hongyang Zhou
+last_modified_at: 2021-11-18
 ---
 
 I hate it when people make simple things complicated, and complicated things impossible.
@@ -31,9 +32,9 @@ and \\( X_{j,k} \\) is the Fourier transform coefficient of \\( x_k \\) at frequ
 
 We also call this the coherence in the frequency domain. One step further, we shall consider the coherence in the *time-frequency domain*, as mentioned below.
 
-### Extension to non-stationary signals
+## Time-Frequency Coherence
 
-If the signals are non-stationary, (and therefore not ergodic), the above formulations may not be appropriate. For such signals, the concept of coherence has been extended by using the concept of time-frequency distributions to represent the time-varying spectral variations of non-stationary signals in lieu of traditional spectra.
+When calculating coherence we assume stationary signals. If the signals are non-stationary, (and therefore not ergodic), the above formulations may not be appropriate. For such signals, the concept of coherence has been extended by using the concept of time-frequency distributions to represent the time-varying spectral variations of non-stationary signals in lieu of traditional spectra.
 
 The **time-frequency coherence (TFC)** is defined to dealing with measuring the properties of nonstationary processes.
 
@@ -41,4 +42,37 @@ The **time-frequency coherence (TFC)** is defined to dealing with measuring the 
 C_{xy}(t, f) = \frac{|\< S_{xy}(t, f) \>|}{\sqrt{\< S_{xx}(t, f) \>} \sqrt{\< S_{yy}(t, f) \>}}
 \\]
 
-For more details, check [Cross spectral analysis of nonstationary processes](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=53742).
+There are usually two representations of the analysis in time-frequency domain:
+
+- analytic signal resulting from Hilbert transform
+- wavelets
+
+Here we talk about the analytic signal approach.
+
+### The analytic signal
+
+The analytic signal representation of time-series x has the form \\( z = x + iy \\), where y is the Hilbert transform of x. z is a complex signal in the time domain with the same sampling rate as the original signal. By applying a filter bank to the signal, that is, a series of band-pass filters centered at successive frequencies f, and by computing the Hilbert transform for each filtered signal, we obtain the analytic signal in the TF domain, that is, for all points \\( z_{t,f} = x_{t,f} + i y_{t,f} \\) in the TF plane.
+
+#### Bivariate Measures in the Frequency and Time-Frequency Domain
+
+Bivariate means between two variables, or two time-series. Two popular measures are *coherence* and *phase-coherence* (also known as *phase-locking value*).
+
+For any analytic signal \\( z=x+iy \\) at a time-frequency point or region, the **auto-spectrum**
+
+\\[
+C = z z^\ast = x^2 + y^2
+\\]
+
+is a real quantity providing the squared amplitude (power) of the signal, i.e. the time-frequency domain equivalent of the signal variance, which is a natural measure of the signal energy. Given two analytic signals \\( z_1 \\) and \\( z_2 \\) in the time-frequency region, the **cross-spectrum** between them is the time-frequencyy domain equivalent of their covariance and is given by
+
+\\[
+C_{12} = z_1 z_2^\ast .
+\\]
+
+The coherence measure is defined as
+
+\\[
+\kappa = \frac{|\< C_{12} \>|}{\sqrt{\< C_1 \>} \sqrt{\< C_2 \>}},
+\\]
+
+which is the equivalent of Pearson's correlation in the time-frequency domain, taken in its absolute value.

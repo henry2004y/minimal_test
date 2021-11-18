@@ -24,10 +24,10 @@ For simplicity, let's consider time series recorded simultaneously from two sens
 where
 
 \\[
-\< S_{xy, j} \> = \frac{2 \Delta^2}{T} \frac{1}{K} \sum_k=1^K X_{j,k} Y_{j,k}^\ast
+\< S_{xy, j} \> = \frac{2 \Delta^2}{T} \frac{1}{K} \sum_{k=1}^K X_{j,k} Y_{j,k}^\ast
 \\]
 
-and \\( X_{j,k} \\) is the Fourier transform coefficient of \\( x_k \\) at frequency with index j.
+and \\( X_{j,k} \\) is the Fourier transform coefficient of \\( x_k \\) at frequency with index j. k is the trial index, and K is the total number of trials of data from each sensor.
 
 We also call this the coherence in the frequency domain. One step further, we shall consider the coherence in the *time-frequency domain*, as mentioned below.
 

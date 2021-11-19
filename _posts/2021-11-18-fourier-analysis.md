@@ -8,7 +8,7 @@ author: Hongyang Zhou
 last_modified_at: 2021-11-18
 ---
 
-I hate it when people make simple things complicated, and complicated things impossible.
+> I hate it when people make simple things complicated, and complicated things impossible.
 
 Let's follow Mark A. Kramer's short course [An Introduction to Field Analysis Techniques: The Power Spectrum and Coherence](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwjb9rHbwqH0AhVtxosKHZggDuYQFnoECAQQAQ&url=https%3A%2F%2Fwww.sfn.org%2F~%2Fmedia%2FSfN%2FDocuments%2FShort%2520Courses%2F2013%2520Short%2520Course%2520II%2FSC2%2520Kramer.ashx&usg=AOvVaw1cR0HUTjm4MKtCBzvwwxDA). I also have a copy in my Google drive.
 
@@ -51,7 +51,7 @@ Here we talk about the analytic signal approach.
 
 ### The analytic signal
 
-The analytic signal representation of time-series x has the form \\( z = x + iy \\), where y is the Hilbert transform of x. z is a complex signal in the time domain with the same sampling rate as the original signal. By applying a filter bank to the signal, that is, a series of band-pass filters centered at successive frequencies f, and by computing the Hilbert transform for each filtered signal, we obtain the analytic signal in the TF domain, that is, for all points \\( z_{t,f} = x_{t,f} + i y_{t,f} \\) in the TF plane.
+The analytic signal representation of time-series x has the form \\( z = x + iy \\), where y is the Hilbert transform of x. z is a complex signal in the time domain with the same sampling rate as the original signal. By applying a filter bank to the signal, that is, a series of band-pass filters centered at successive frequencies f, and by computing the Hilbert transform for each filtered signal, we obtain the analytic signal in the time-frequency domain, that is, for all points \\( z_{t,f} = x_{t,f} + i y_{t,f} \\) in the time-frequency plane.
 
 #### Bivariate Measures in the Frequency and Time-Frequency Domain
 
@@ -76,3 +76,11 @@ The coherence measure is defined as
 \\]
 
 which is the equivalent of Pearson's correlation in the time-frequency domain, taken in its absolute value.
+
+## Tools
+
+### Julia
+
+There is a [FourierAnalysis.jl](https://github.com/Marco-Congedo/FourierAnalysis.jl/tree/master) package. I tried to follow what are available inside that package: it's very complicated. The author tries to be thorough in the documentation, but it's far from perfect.
+
+There is another one, [SignalAnalysis.jl](https://github.com/org-arl/SignalAnalysis.jl), which I used to generate spectrum before. I need to learn more about the pros and cons between these packages.

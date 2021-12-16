@@ -10,7 +10,7 @@ last_modified_at: 2021-12-16
 
 最近给了一个线上的有关Vlasiator.jl的[报告](https://github.com/JuliaCN/MeetUpMaterials/blob/master/Online2021/day3_zhou_vlasiator.pdf),
 
-<iframe src="//player.bilibili.com/player.html?aid=252359335&bvid=BV1vY411W7Dw&cid=461124274&page=19" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe width="560" height="315" src="//player.bilibili.com/player.html?aid=252359335&bvid=BV1vY411W7Dw&cid=461124274&page=19" title="bilibili video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 顺带稍微介绍了一下我们的学科，以及空间数值模拟的基础概念。依旧没有达到我很满意的程度，但是可以一点点提高，无论是实际的内容、时间的控制、
 配套的讲解、和遇到突发情况的准备。

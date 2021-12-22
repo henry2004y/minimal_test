@@ -5,10 +5,10 @@ tags:
 categories:
   - Blog
 author: Hongyang Zhou
-last_modified_at: 2021-12-19
+last_modified_at: 2021-12-22
 ---
 
-昱曦向我推荐了一个讲解动力学模拟的讲座
+昱曦向我推荐了一个Anatoly Spitkovsky的动力学模拟的讲座，
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/I09QeVDoEZY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -52,3 +52,25 @@ last_modified_at: 2021-12-19
 * When solving the conversation equations especially the mass conservation equation, numerial dispersion is bad because when you get negative density you get stuck, but it is kind of alright for a EM field solver because negative electric field is still fine.
 
 * Nature is hyperbolic but not elliptic. The Poisson equation, which is elliptic, acts as a constraint from the charge conservation. You can of course solve the Poisson equation directly (typically using FFT method), but that requires information from all over the domain. The nature does not need to know Poisson equation to evolve the charge and currents: conservation law comes in the first place! Parallelization, localization, whatever you call it---I don't need to call my mum 5000 km away everytime I want to make soup.
+  * There are schemes which carefully calculate the charge depositions and thus guarantee charge conservation. However, high order (>1) charge deposition schemes are ~ 25 times more expensive than 1st order?
+  * Most PIC codes don't solve for Poisson equation: they assume charge conservation is valid throughout the time advance as long as the initial condition is charge conserved.[^FLEKS] There are two reasons behind this: 1. we assume this error is small that it does not affect the solution drastically; 2. Poisson solver is usually the most expensive part if included. If in the problem we are dealing with we do need to satisfy Poisson equation, in practice we do corrections every few time steps to as a trade-off.
+
+[^FLEKS]: After years of fighting with numerical artifacts, Yuxi and Gábor came up with a Poisson equation correction to the semi-implicit PIC solver in FLEKS.
+
+* What happens if we start with charge imbalance? For example, let's say we only initialize electrons in the domain and forget about ions. To satisfy Poisson's equation, the simplest solution would be zero electric fields. This means that the code thinks there is an opposite and equal charge density ion species to my initialized electrons. When electrons start moving, ions will sit on the grid. This is an easy way to simulate infinite mass of ions.
+
+* High order FDTD schemes (4th spatial order) work better at reducing unphysical *Cherenkov instability*. Cherenkov instability relates to the dispersion error caused by the leap-frog scheme. Especially for relativistic particles, the dispersion error may create particles that travel faster than the speed of light **in the medium** (although still less than the speed of light in vacuum), which then becomes the recipe for the Cherenkov radiation. It's similar to the sonic boom of a supersonic aircraft.
+Anatoly called this the "pedestrian" version because a strict analysis of the numerical Cherenkov instability also involves interaction with plasma modes, and the math quickly becomes "ugly".
+
+* vPIC is known for its speed. Why can it achieve it and why doesn't all PIC codes follow? This is the art of balance, or trade-off: vPIC chooses to use the simplest schemes whenever possible and hope that all the statistical noises will be suppressed with enough number of macro particles per cell. As a comparison, the validity of a solution may be kept with 4 particles per cell with high order schemes and corrections, while vPIC may require 100 particles per cell; if vPIC is 25 times faster, then the final result is equivalent. However, one disadvantage I can think of about vPIC is that it then may require more memory/storage, which puts pressure on the hardwares.
+
+* The asymptotic behavior of applying stencil filters N times is the multiplication of cosine functions. To think it in an easy way, cos(0) = 1 which gives the center value of the stencil (i.e. original value), and as this angle goes to \\( \pm 90^o \\), the weight factor goes to 0. Of course we can have negative factor values as well.
+
+* Boundaries
+  * Periodic: I am thinking if the periodic vectors in Julia can be easily used in our kernel codes without introducing ghost cells? Is it general enough to be compatible with other boundaries?
+  * Perfectly conducting walls: tangential E --> 0, perpendicular B --> 0 (w.r.t. the wall boundary). A common problem arises in simulating a circle/sphere boundary in a Cartesian grid, where this stair-like inner boundary appears. By smoothing the electric field at the boundaries, which means that instead of strictly setting the transverse electric field to 0, we switch to kill part of it and hope it help smooth out the transition.
+  * Open boundary: *absorbing layer*, *perfectly matched layer* (PML), transmitting wall. The idea of PML is to add a diffusive term to the Maxwell's equations, which you say that there is region on the grid with finite conductivity, which in turn damps out the field. This works like absorbing material with different conductivity for E and B fields. Another approach is the transmitting wall. This works well if the wave propagation direction is normal to the wall (i.e. no oblique waves), which is usually true if the wall is far away from the source. This is pretty cheap compared to PML.
+  * Moving window, or a shift in the frame of reference, is sometimes used in beam and shock simulation. The simulation box is assumed to fly at the speed of light to follow a fast beam.
+  * Injection of particles: we can have moving injectors, for example, in shock simulations.
+
+* For PIC codes, usually parallel domain decomposition is not an issue, but **load balancing** is. For the typically case Anatoly showed, 90% of the time is spent with particles, and 10% of the time is spent with fields. The larger density gradients you have in your problem, the more severe the load balancing issue is. Shock and reconnection, the two main problems space physics studies, unfortunately fall into this regime.

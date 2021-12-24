@@ -5,7 +5,7 @@ tags:
 categories:
   - Blog
 author: Hongyang Zhou
-last_modified_at: 2021-12-22
+last_modified_at: 2021-12-24
 ---
 
 昱曦向我推荐了一个Anatoly Spitkovsky的动力学模拟的讲座，

@@ -74,3 +74,25 @@ Anatoly called this the "pedestrian" version because a strict analysis of the nu
   * Injection of particles: we can have moving injectors, for example, in shock simulations.
 
 * For PIC codes, usually parallel domain decomposition is not an issue, but **load balancing** is. For the typically case Anatoly showed, 90% of the time is spent with particles, and 10% of the time is spent with fields. The larger density gradients you have in your problem, the more severe the load balancing issue is. Shock and reconnection, the two main problems space physics studies, unfortunately fall into this regime.
+
+* Emission of non-thermal radiation: most often the frequency of the energetic radiation is not resolved by the grid. If we care about radiation, we need to add photons as a separate species, and for example the radiation reaction force as an additional term in the equation of motion for pulsar simulations, or a force term for the inverse Compton scattering.
+
+* The laser-plasma field is adding extra physics for high-intensity laser that will reach a fraction of the critical field when QED effects and pair creation become important.
+
+* For black hole magnetospheres and pulsars, we need to consider general relativistic effects with non-Euclidian metrics.
+
+* *Streaming instabilities*, like Weibel instability, can be important at collisionless shocks.
+
+> Caution is required, but one can be paralyzed by a conservative attitude into missing profitable applications.
+> --- Birdsall & Langdon (1991)
+
+## A Few Words About Hybrid PIC
+
+* An important limitation of full PIC methods is the limited separation of scales. Only microscopic systems can be modelled. In particular, it's hard to model electron/ions plasmas with realistic mass ratio, since \\( \omega_p \propto 1/\sqrt{m} \\), the real ratio will give a ~43 times difference. Hence ion acceleration is hard to capture with PIC (except in the ultra-relativistic limit).
+
+* Hybrid codes treat ions as macro-particles and electrons as massless neutralizing fluid (methods works for non-relativistic plasmas), which means that in the electron momentum equation, we assume the electron inertia term \\( n_em_e\frac{d\mathbf{V}_e}{dt} \\) is 0, and the generalized Ohm's law can be derived based on this. Note again that in this simplified model electric field is now a state quantity that is determined by ion density, velocity, magnetic field, and electron pressure gradient.
+  * Hybrid model is not accurate at the shock. The closure of the electron pressure term usually assume some kind of equation of state, which involves a **constant** polytropic index \\( \gamma \\) in \\( P \propto n^\gamma \\). The most common assumption is an adiabatic system, which is not true across the shock.
+  * Ions are pushed at least twice in each timestep due to the requirement of proper centering in time for the EM fields. The numerical scheme looks a bit convolved because electric field and magnetic field are defined at staggered time stamps, but you need a future electric field to get a future magnetic field.
+  * An interesting side effects is in the wave dispersion for whistler mode: \\( \omega \propto k^2 \\), so as you refine the grid more and more (i.e larger and larger k), the whistler goes faster and faster in an unbounded manner! In real physics, the whistler is bounded by electrons; since we don't have real electrons in a hybrid system, we cannot stop its growth. Therefore in practice we need to filter out the high spatial-frequency waves to make the code stable and hopefully lead to convergence. This is usually achieved by filtering the currents, but not fields. Anatoly said that's because it's much easier to maintain charge conservation when manipulating the currents. This also explains why in the older iPIC3D model filtering/smoothing the electric field does not end up doing anything better. However, if your scheme maintains charge conservation while filtering the fields, you should be fine.
+
+* 我觉得混合模拟中的这套逻辑非常奇特。等离子体本来是一个整体，电子离子和电磁场共同作用形成一个体系。然而这里面的关系却是不对等的：粒子离开了电磁场就会变成杂乱无章的个体，但电磁场忽视一两个粒子对整个体系一点影响也没有。如果把离子比作中产阶级，把电子比作底层阶级，电磁场比作政府，那么混合模拟就好比我们只关心社会大尺度包括的问题，而仅把底层民众的声音当作一个背景声音，简化个体意志的影响。然而神奇的是，底层民众的行动依旧会被电磁场牢牢把持，甚至可以通过仅仅观察底层人民受影响的程度来映射整个政府的运作，而无需考虑中产阶级。我又想起了Y.Y课上做的社会比喻，那是一个起点，但整个模型的复杂程度可与描述社会相当。

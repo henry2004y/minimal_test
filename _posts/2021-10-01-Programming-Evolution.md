@@ -5,6 +5,7 @@ tags:
 categories:
   - Blog
 author: Hongyang Zhou
+last_modified_at: 2021-12-30s
 ---
 
 In the 20th century as a programmer, you have to learn and write machine code.
@@ -17,6 +18,7 @@ Now you need to learn how to write do loops; in the future you may only need `ma
 Quoted from [Guy L. Steele Jr.'s talk at Strange Loop](https://www.infoq.com/presentations/Thinking-Parallel-Programming/) in 2011.
 
 Keep adding levels of abstractions:
+
 * Coding in octal or decimal
   * Original form, write strings
 * Assemblers
@@ -51,6 +53,7 @@ Keep adding levels of abstractions:
   * Worth sacrificing performance for
 
 We need a different mindset for parallel prgramming:
+
 * Good sequential code minimizes total number of operations.
 * Good parallel code often performs redundant operations to reduce communications.
 
@@ -63,6 +66,7 @@ We need a different mindset for parallel prgramming:
 Think about `map, reduce` in the last bullet point.
 
 Guy proposed a language level parallel paradigm where
+
 * programmers define your data structures and methods;
 * programmer ensure to the compiler that your data structures and methods maintains certain properties like associativity and commutativity;
 * the compiler decides if it is possible to apply a parallel execution given the available resources on the fly.

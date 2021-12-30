@@ -18,19 +18,22 @@ last_modified_at: 2021-10-09
 ---
 
 在诸多程序中，我们能看到冗杂、混乱的逻辑和实现。是的，的确对一些当前的情况能跑，但是一碰就碎，一改就错。常见的例子：
+
 * 绘图脚本，大量重复的函数调用、固定的参数——上千行代码只能画一张图，本以为只要修改一处结果改了20行；
 * 同一个功能被多次反复实现，各自为政，直到某个时间点发生冲突，需要花大量时间查错；
 * 乱七八糟的对象分类，一句话能说明白的东西非要绕个九曲十八弯，我调用你来你再调用我；
 * 到处特事特办，每一个模块都极其“独立”，只能完成一项特定任务，换个对象别说买个新婚房，楼都要重新建;
 * 菜市场一样的函数，啥都能卖，你也不知道你想买啥；
 * 四处乱飞的全局变量，找到源头算你运气好；
+* 超长的、无意义的注释。
 
 > Any fool can write code that a computer can understand. Good programmers write code that humans can understand.
 
 What is it that makes programs hard to work with?
-* Programs that are hard to read are hard to modify. 
-* Programs that have duplicated logic are hard to modify. 
-* Programs that require additional behavior that requires you to change running code are hard to modify. 
+
+* Programs that are hard to read are hard to modify.
+* Programs that have duplicated logic are hard to modify.
+* Programs that require additional behavior that requires you to change running code are hard to modify.
 * Programs with complex conditional logic are hard to modify.
 
 ## Steps in refactoring
@@ -48,17 +51,17 @@ Quoted from Don Roberts
 > Three strikes and you refactor.
 
 When do you need to refactor:
+
 * when adding a function;
 * when fixing a bug;
 * when reviewing codes.
 
 What you need to achieve with refactoring:
-* To enable sharing of logic. 
+
+* To enable sharing of logic.
 * To explain intention and implementation separately.
 * To isolate change.
-  * I use an object in two different places. I want to change the behavior in one of the two cases. If I change the object, I risk 
-changing both. So I first make a subclass and refer to it in the case that is changing. Now I can modify the subclass without 
-risking an inadvertent change to the other case. 
+  * I use an object in two different places. I want to change the behavior in one of the two cases. If I change the object, I risk changing both. So I first make a subclass and refer to it in the case that is changing. Now I can modify the subclass without risking an inadvertent change to the other case.
 * To encode conditional logic.
   * Polymorphism
   * Dispatch
@@ -105,3 +108,5 @@ One live example quoted from the book:
 
 Here is a live example in Python 3.9 for bad smell in code:
   <iframe width="560" height="315" src="https://www.youtube.com/embed/LrtnLEkOwFE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+Remember to always keep the code simple and self-descriptive, such that no extra explanatory comments are needed if possible.

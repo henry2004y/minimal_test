@@ -26,7 +26,11 @@ last_modified_at: 2022-01-11
 
 I found a series of Khan lectures on the maths related to Einstein notation.
 
-There is a simple [example](https://math.stackexchange.com/questions/666246/tensor-einstein-summation-notation) for superscript and subscript. A simple rule is that **subscripts represent row vectors and superscripts represent column vectors.**
+There is a simple [example](https://math.stackexchange.com/questions/666246/tensor-einstein-summation-notation) for superscript and subscript. A simple rule is that **subscripts represent row vectors and superscripts represent column vectors.** (This is only true for Euclidean space!)
+
+##
+
+Take a look at [electromagnetic tensor](https://en.wikipedia.org/wiki/Electromagnetic_tensor). The Maxwell's equations can be derived from from the Lagrangian formulation. 
 
 ##
 

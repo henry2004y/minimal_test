@@ -5,7 +5,7 @@ tags:
 categories:
   - Blog
 author: Hongyang Zhou
-last_modified_at: 2022-01-11
+last_modified_at: 2022-01-12
 ---
 
 > Make analogies of what you don't know to what you know.
@@ -24,9 +24,13 @@ last_modified_at: 2022-01-11
 
 [Covariance and contravariance of vectors](https://en.wikipedia.org/wiki/Covariance_and_contravariance_of_vectors)
 
-I found a series of Khan lectures on the maths related to Einstein notation.
+I found a series of Khan lectures on the maths related to Einstein notation. I should go through the basics before doing anything special, cuz you can only speak after you learn the language.
 
-There is a simple [example](https://math.stackexchange.com/questions/666246/tensor-einstein-summation-notation) for superscript and subscript. A simple rule is that **subscripts represent row vectors and superscripts represent column vectors.** (This is only true for Euclidean space!)
+There is a simple [example](https://math.stackexchange.com/questions/666246/tensor-einstein-summation-notation) for superscript and subscript. A simple rule is that **subscripts represent row vectors and superscripts represent column vectors.** (This is **ONLY** true for Euclidean space.)
+
+[A Complete Guide to The Ricci Tensor](https://profoundphysics.com/the-ricci-tensor/).
+
+Riemann geometry
 
 ##
 

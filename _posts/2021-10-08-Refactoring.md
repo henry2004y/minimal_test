@@ -5,7 +5,7 @@ tags:
 categories:
   - Blog
 author: Hongyang Zhou
-last_modified_at: 2021-10-09
+last_modified_at: 2022-01-25
 ---
 
 所谓refactoring，指的是在不改变程序外部功能的情况下对内部结构进行优化调整，
@@ -110,3 +110,11 @@ Here is a live example in Python 3.9 for bad smell in code:
   <iframe width="560" height="315" src="https://www.youtube.com/embed/LrtnLEkOwFE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Remember to always keep the code simple and self-descriptive, such that no extra explanatory comments are needed if possible.
+
+## Mindset
+
+Sometimes, refactoring is more about soft skills and decision making. I watched this interesting video 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CktRuMALe2A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+while thinking more about my experience in real working environment. Select who to work with may be more important than the work itself.

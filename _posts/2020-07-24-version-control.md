@@ -47,6 +47,10 @@ The first principle of commits is one thing at a time. For instance, if you have
 
 Often git may get confused about renaming files. Check [this StackOverflow discussion](https://stackoverflow.com/questions/433111/how-to-make-git-mark-a-deleted-and-a-new-file-as-a-file-move) and the trick of using `git log --follow` in [Follow the History of renamed files](https://kgrz.io/use-git-log-follow-for-file-history.html).
 
+The important thing to know is that internally git does not have the concept of renaming: it only knows deleting and adding.
+A more thorough explanation can be found [here](https://vjeko.com/2020/11/24/understanding-renaming-moving-files-with-git/).
+In most common cases, when you try to reorganizing your code, consider separate the renaming stage and content modification stage.
+
 ## Squashing
 
 Generally it is better to squeeze small commits before merging, especially in a PR. Take a look at this post [Combining multiple commits before pushing](https://stackoverflow.com/questions/6934752/combining-multiple-commits-before-pushing-in-git).

@@ -9,17 +9,26 @@ author: Hongyang Zhou
 last_modified_at: 2022-01-24
 ---
 
-I have been went through this several times. In the early stage, I was using MATLAB for concatenating figures into videos. 
-There are some shortcomings with this method:
+An animation is simply frames of figures. It is pretty helpful to be proficient at generating a set of figures and combining them into a video.
 
-1. It requires the MATLAB license.
+## Making Figures
+
+Guidelines in making figures from time-series data:
+
+- Reuse whatever possible. The figure canvas, axis, colorbar can often be reused. Instead of creating and deleting objects, think about the possibilty of modifying the properties of objects or replacing the data. Many practical examples can be found in [Vlasiator.jl](https://github.com/henry2004y/Vlasiator.jl/tree/master/examples) using Matplotlib.
+
+## Concatenating Figures Into Videos
+
+I have encountered the task of combining figures into a video several times. In the early days, I used built-in MATLAB functions for concatenating figures into videos. There are some shortcomings with this method:
+
+1. It requires a MATLAB license.
 2. The simple brute force algorithm generates large video files, and you cannot control the output resolution.
 
 Then I tried the [VideoIO](https://github.com/JuliaIO/VideoIO.jl) package in Julia, but unfortunately, currently it lacks the support for VGBA encoding format.
 
-After some searches on the web, I found a neat solution to these kinds of task: [ffmpeg](https://www.ffmpeg.org/). Personally I installed it through Macports, but you can download it directly from the website.
+After searching more on the web, I found a neat solution to these kinds of task: [ffmpeg](https://www.ffmpeg.org/). I installed it through Macports on Mac, but you can also download it directly from the website for installation on other platforms.
 
-## Issues
+### Issues of Using ffmpeg
 
 Although it seems easy to make videos from figures, it is actually not. You need to have some basic understandings of how figures are saved and how different video formats are structured. I have encountered several issues when using **ffmpeg**:
 
@@ -51,15 +60,10 @@ Although it seems easy to make videos from figures, it is actually not. You need
 
   The best practice is to pad zeros such that all the file names have the same width.
 
-## TL;DR
+### TL;DR
   
 Finally, the following command works for me:
 
 ```
 ffmpeg -r 12 -pattern_type glob -i '*.png' -vcodec libx264 -vf scale=640:-2 -pix_fmt yuv420p pi.mp4
 ```
-
-
-
-
-

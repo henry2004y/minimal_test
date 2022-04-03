@@ -3,7 +3,7 @@ permalink: /links/
 title: "Links"
 ---
 
-[My personal Vlasiator manual](https://henry2004y.github.io/vlasiator_manual)
+[My Personal Vlasiator Manual](https://henry2004y.github.io/vlasiator_manual)
 
 [Coding in Julia](https://henry2004y.github.io/JuliaNotes/)
 
@@ -11,19 +11,21 @@ title: "Links"
 
 [CFD in Practice](https://henry2004y.github.io/CFD_Practice/)
 
-[Research log](https://henry2004y.github.io/Ganymede/)
+[Research Log](https://henry2004y.github.io/Ganymede/)
 
 [Vlasiator.jl](https://henry2004y.github.io/Vlasiator.jl/dev/)
 
 [Batsrus.jl](https://henry2004y.github.io/Batsrus.jl/dev/)
 
+[Data Processing in Space Physics](https://henry2004y.github.io/VisAnaJulia/dev/)
+
 [TestParticle.jl](https://henry2004y.github.io/TestParticle.jl/dev/)
 
 [FieldTracer.jl](https://henry2004y.github.io/FieldTracer.jl/dev/)
 
-[Ideal MHD toy model](https://henry2004y.github.io/Dante.jl/dev/)
+[Ideal MHD Toy Model](https://henry2004y.github.io/Dante.jl/dev/)
 
-[Multigrid solver in MATLAB](https://github.com/henry2004y/MGSolver)
+[Multigrid Solver in MATLAB](https://github.com/henry2004y/MGSolver)
 
 [1D PIC in Julia](https://github.com/henry2004y/kempo)[^1]
 

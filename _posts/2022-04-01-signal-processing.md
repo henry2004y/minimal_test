@@ -5,7 +5,7 @@ tags:
 categories:
   - Blog
 author: Hongyang Zhou
-last_modified_at: 2022-04-01
+last_modified_at: 2022-04-05
 ---
 
 
@@ -37,12 +37,34 @@ Filtering is critical in signal analysis. Real data consist of signals of variou
 
 ### High Pass Filtering
 
-- Often requires odd number of coefficients. [StackOverflow](https://dsp.stackexchange.com/questions/18413/why-the-number-of-filter-coefficients-in-fir-filter-has-to-be-an-odd-number)
+- Often requires odd number of coefficients for the window. [StackOverflow](https://dsp.stackexchange.com/questions/18413/why-the-number-of-filter-coefficients-in-fir-filter-has-to-be-an-odd-number)
+
+For example, in the [DSP.jl](https://docs.juliadsp.org/latest/contents/) package,
+
+```julia
+fs = 2.0 # sampling rate, [Hz]
+responsetype = Highpass(0.1; fs)
+designmethod = FIRWindow(hanning(63)) # high pass requires odd number
+data_high = filt(digitalfilter(responsetype, designmethod), data)
+```
 
 ### Low Pass Filtering
 
-
+```julia
+responsetype = Lowpass(1.0; fs)
+```
 
 ### Band Pass Filtering
 
 A combination of high pass and low pass filterings.
+
+```julia
+responsetype = Bandpass(0.1, 0.5; fs)
+```
+
+## Ordering of Steps
+
+Smoothing is essentially one kind of low pass filterings. In practice, it is often better to
+
+1. First demeaning (0th order) or detrending (1st order) with some kind of smoothers.
+2. Then filtering the data in the band of interest.

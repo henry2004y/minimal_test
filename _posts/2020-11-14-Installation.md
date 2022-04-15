@@ -5,6 +5,7 @@ tags:
   - computer
 categories:
   - Blog
+last_modified_at: 2022-04-15
 ---
 
 The first thing to tell if one is familiar with codes is whether he or she can compile it. As I move to new group using a completely different code, this is a good chance to learn the workflow.
@@ -47,6 +48,6 @@ to generate the binary executable if Boost is already installed in the default l
 
 The golden rule for me as an open-source project: if it cannot be compiled and run the first time, don't waste your time on it unless there is really something interesting underneath!
 
-Package dependency is a hell. For example, if you install one of the most famous plotting packages nowadays matplotlib using pip, you need to not only say `pip install matplotlib`, but also other packages if you want to display the figures on the screen, otherwise by default it will use the `agg` backend with no display. That is why some people recommend installing it using `apt-get` under Ubuntu/Debian. However, the system-wise package management system seems to have some issue recognizing my self-installed version of python3.9 instead of the system default python3.6. Nothing is perfect.
+Package dependency is a hell. For example, if you install one of the most famous plotting packages nowadays matplotlib using pip, you need to not only say `pip install matplotlib`, but also other packages if you want to display the figures on the screen, otherwise by default it will use the `agg` backend with no display. That is why some people recommend installing it using `apt-get` under Ubuntu/Debian. However, the system-wise package management system seems to have some issue recognizing my self-installed version of python3.9 instead of the system default python3.6. Lately people recommend using Conda to handle all Python dependencies, and indeed I have better experience with conda. Nothing is perfect.
 
 Next step is obviously testing. This is kind of missing for Vlasiator. Currently the existing part uses shell script to do testing, but I would say either the shell scripts need improvement, or they should be replaced with Makefile or other scripting languages. Let's wait for the next chapter.

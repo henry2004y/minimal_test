@@ -4,6 +4,7 @@ tags:
   - visual
 categories:
   - Blog
+last_modified_at: 2022-04-15
 ---
 
 The built-in streamline function of Matplotlib/MATLAB is not proper for scientifically visualizing field information.
@@ -20,6 +21,8 @@ Take a look at the official streamline plots:
 This is definitely what you expect. I noticed that there is a `minlength` argument described in [streamplot](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.streamplot.html). Maybe give that a try?
 
 The solution turns out to be doing tracing alone. In [SpacePy]((https://github.com/spacepy/spacepy/blob/master/spacepy/pybats/trace2d.py)), there's a standalone C code for tracing one line at a time and output the point data. Initially I copied the C code, compiled it into a dynamic library, and then call the function directly from Julia. Next I incorporate the function into the plotting function I have and use it instead of the original streamplot in Matplotlib.
+
+Maybe in Matplotlib 3.6, we can get a new keyword that provides continuous streamlines.
 
 ---
 

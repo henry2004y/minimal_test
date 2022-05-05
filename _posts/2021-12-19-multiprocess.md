@@ -54,3 +54,11 @@ From a software programmer's perspective, only the last two points can be contro
 * 减少不必要的开会，任务分配下去后，少量高效地沟通，最后一道汇总（reducing communication）。
 
 并行程序就好比一家公司，成天开会的公司干不成活的。
+
+## Modern Philosophy of Concurrency
+
+Quoted from the Go language documentation:
+
+> Do not communicate by sharing memory; instead, share memory by communicating.
+
+Channel is a programming concept for implementing this idea. A channel in programming has two halves: a transmitter and a receiver. A channel is said to be closed if either the transmitter or receiver half is dropped.

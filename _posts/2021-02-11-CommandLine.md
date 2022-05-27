@@ -5,7 +5,7 @@ tags:
   - computer
 categories:
   - Blog
-last_modified_at: 2021-10-29
+last_modified_at: 2022-05-27
 ---
 
 When using properly, command line is often the easiest and fastest way to get tasks done, even though the same thing can be also accomplished in other ways like using Python, Perl, etc..
@@ -143,6 +143,16 @@ for f in *.html; do
     mv -- "$f" "${f%.html}.php"
 done
 ```
+
+## sudo
+
+`sudo -s`: run shell by root without changing a directory, also env vars (that could be set in, e.g. `.bash_profile`) wouldn’t be imported.
+
+`sudo -i`: run shell by root, import env vars and change directory.
+
+`su -`: first change user, then run shell. It means that all env vars were cleaned and "clean" root session was executed.
+
+`su`: command doesn’t clean env vars, it just changes a user to root and keeps env vars for old user.
 
 ---
 

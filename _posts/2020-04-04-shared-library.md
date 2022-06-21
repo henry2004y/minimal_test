@@ -244,12 +244,11 @@ issues with shared libraries - as well as the positives and negatives of differe
 [Creating dynamic libraries](https://docs.oracle.com/cd/E19957-01/805-4940/6j4m1u7p5/index.html)
 
 [^1]: Position Independent Code (PIC) is code that works no matter where in memory it is placed. 
-Because several different programs can all use one instance of your shared library, the library cannot store things at fixed addresses, 
-since the location of that library in memory will vary from program to program.
+Because several different programs can all use one instance of your shared library, the library cannot store things at fixed addresses, since the location of that library in memory will vary from program to program.
 In PIC, each reference to a global item is compiled as a reference through a pointer into a global offset table. 
 Each function call is compiled in a relative addressing mode through a procedure linkage table. 
 The size of the global offset table is limited to 8 Kbytes on SPARC processors. 
-The `-PIC` compiler option is similar to `-pic`, but `-PIC` allows the global offset table to span the range of 32-bit addresses.
+The `-PIC` compiler option is similar to `-pic`, but `-PIC` allows the global offset table to span the range of 32-bit addresses. Always try `-pic` first for smaller binary sizes; Use `-PIC` is you encountered an error.
 
 [^2]: GCC first searches for libraries in `/usr/local/lib`, then in `/usr/lib`. Following that, it searches for libraries in the 
 directories specified by the `-L` parameter, in the order specified on the command line.

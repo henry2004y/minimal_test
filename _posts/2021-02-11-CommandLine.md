@@ -5,7 +5,7 @@ tags:
   - computer
 categories:
   - Blog
-last_modified_at: 2022-05-27
+last_modified_at: 2022-06-30
 ---
 
 When using properly, command line is often the easiest and fastest way to get tasks done, even though the same thing can be also accomplished in other ways like using Python, Perl, etc..
@@ -29,14 +29,14 @@ sed -i 's/original/new/g' file.txt
 
 Explanation:
 
-  * `sed` = Stream Editor
-  * `-i` = in-place (i.e. save back to the original file)
-  * The command string:
-    * `s` = the substitute command
-    * `original` = a regular expression describing the word to replace (or just the word itself)
-    * `new` = the text to replace it with
-    * `g` = global (i.e. replace all and not just the first occurrence)
-  * `file.txt` = the file name
+* `sed` = Stream Editor
+* `-i` = in-place (i.e. save back to the original file)
+* The command string:
+  * `s` = the substitute command
+  * `original` = a regular expression describing the word to replace (or just the word itself)
+  * `new` = the text to replace it with
+  * `g` = global (i.e. replace all and not just the first occurrence)
+* `file.txt` = the file name
 
 ## Monitoring log file in real time
 
@@ -64,16 +64,27 @@ ls -t | head -n 1
 
 ## Piping selected files into tar
 
-```
+```sh
 ls -Art | tail -n 5 | tar czvf out.tar.gz -T -
 ```
 
 ## Avoiding file auto purge
+
 On many file systems, there may be some rules for file housekeeping. One trick to avoid it is to touch each and every file in the repository. This can be done through the following command:
 
 ```sh
 find /home/example -exec touch {} \;
 ```
+
+## Counting Files
+
+```sh
+ls -F | grep -v / | wc -l
+```
+
+`ls -F` list all files and append indicator (one of */=>@|) to entries'
+`grep -v /` keep all de strings that do not contain a slash;
+`wc -l` count lines.
 
 ## Checking missing sequence files
 

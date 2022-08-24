@@ -3,15 +3,13 @@ permalink: /links/
 title: "Links"
 ---
 
+[Research Log](https://henry2004y.github.io/Ganymede/)
+
+[Plasma Key Notes](https://henry2004y.github.io/KeyNotes/)
+
 [My Personal Vlasiator Manual](https://henry2004y.github.io/vlasiator_manual)
 
-[Coding in Julia](https://henry2004y.github.io/JuliaNotes/)
-
-[Coding in Fortran](https://github.com/henry2004y/FortranNotes/blob/master/notes/FortranNotes.pdf)
-
 [CFD in Practice](https://henry2004y.github.io/CFD_Practice/)
-
-[Research Log](https://henry2004y.github.io/Ganymede/)
 
 [Vlasiator.jl](https://henry2004y.github.io/Vlasiator.jl/dev/)
 
@@ -29,8 +27,12 @@ title: "Links"
 
 [1D PIC in Julia](https://github.com/henry2004y/kempo)[^1]
 
+[Coding in Julia](https://henry2004y.github.io/JuliaNotes/)
+
+[Coding in Fortran](https://github.com/henry2004y/FortranNotes/blob/master/notes/FortranNotes.pdf)
+
 [Working on Clusters](https://github.com/henry2004y/ScriptingNotes/blob/main/cluster/Clusters.md)[^1]
 
 [Vlasiator: simulating near-Earth space with high-performance computing](https://space-travel.blog/vlasiator-d4929b68d27b)
 
-[^1]: thes repos may currently be private.
+[^1]: the repos may currently be private.

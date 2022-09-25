@@ -39,7 +39,6 @@ Although the speed improved by 10% beyond pure `-O3`, the plasma bulk speed diff
 
 On top of the previous two observations, I need to be really careful about the most aggressive `-Ofast` flag, which includes `-ffast-math`.
 
-
 ## Vlasiator
 
 However, even if I turn off all the optimization flags, Vlasiator still shows different result on different platforms.

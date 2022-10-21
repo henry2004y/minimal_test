@@ -17,11 +17,12 @@ I would say Vlasiator chose a very different approach compared to SWMF, the latt
 Honestly this is the first time I’ve ever looked into the details of C++ package dependencies. I spent some time understanding which files/packages should be in the lib paths, and which should be in the include paths. I looked at how Vlasiator handles all the dependencies in the Makefile as well as the parameters, and thought there might be a way to greatly simplify the installation process. At this point I still don’t know how Vlasiator chooses which problem to solve, but that should be an easy one.
 
 Here is a list of issues that I found:
+
 1. When using git for an open source project held on GitHub, we should usually access through `https` but not `ssh`.
 2. Overall the dependencies are too complicated to handle manually. I have been working with scientific codes for years now, but it still took me quite a while to install all the dependencies.
 3. The installation guide wiki page is not easy to follow. I would be amazed if any outsiders successfully compile the code by following the guidance.
 4. Changing all the parameters directly in the Makefile is not a good idea; explicitly listing all the compilation dependencies is also unnecessary and unmaintainable for large C++ projects.
-5. Source codes should be better organized by folders. 
+5. Source codes should be better organized by folders.
 
 I remember during the past few months at Michigan, I complained quite a bit about how BATSRUS can utilize the modern workflow better and become more productive. I would not realize the actual situation in other scientific groups if I did not move. This is the process from which I learn.
 
@@ -40,10 +41,12 @@ Admittedly it would still be a practical issue to figure out how to avoid unnece
 It turns out that a real compatible work takes me not two days but two weeks. After getting the advices from group members, I realized that totally abandoning the previous customized Makefile workflow is not ideal, and I have spent quite some time coming up with a proper way of setting those library paths in the main Makefile as well as customized ones back and forth. Keeping codes that are presumably useful in the future is also not a good idea, which is something I have read about a couple of months ago, and now it goes into practice.
 
 So now on a fresh new machine running Ubuntu, one can simply do
-```
+
+```shell
 ./configure.py -install
 make
 ```
+
 to generate the binary executable if Boost is already installed in the default location. This can be polished better if more user cases are collected, but at this point I don't have to do anything further. Loading and saving customized Makefiles are also plausible, but additional improvements are only possible if anybody uses and complains.
 
 The golden rule for me as an open-source project: if it cannot be compiled and run the first time, don't waste your time on it unless there is really something interesting underneath!

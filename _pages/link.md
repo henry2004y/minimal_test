@@ -31,6 +31,8 @@ title: "Links"
 
 [Coding in Fortran](https://github.com/henry2004y/FortranNotes/blob/master/notes/FortranNotes.pdf)
 
+[Coding in C++](https://github.com/henry2004y/CxxNotes/blob/main/README.md)[^1]
+
 [Working on Clusters](https://github.com/henry2004y/ScriptingNotes/blob/main/cluster/Clusters.md)[^1]
 
 [Vlasiator: simulating near-Earth space with high-performance computing](https://space-travel.blog/vlasiator-d4929b68d27b)

@@ -38,3 +38,13 @@ title: "Links"
 [Vlasiator: simulating near-Earth space with high-performance computing](https://space-travel.blog/vlasiator-d4929b68d27b)
 
 [^1]: the repos may currently be private.
+
+## Tools
+
+[excalidraw](excalidraw.com)
+
+[tinypng](https://tinypng.com/)
+
+[MP4COMPRESS](https://www.mp4compress.com/)
+
+[Compiler Explorer](https://godbolt.org/)

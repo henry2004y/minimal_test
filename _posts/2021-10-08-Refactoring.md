@@ -5,15 +5,22 @@ tags:
 categories:
   - Blog
 author: Hongyang Zhou
-last_modified_at: 2022-01-25
+last_modified_at: 2023-01-07
 ---
 
 所谓refactoring，指的是在不改变程序外部功能的情况下对内部结构进行优化调整，
+
 > to restructure software by applying a series of refactorings without changing its observable behavior.
-逐渐我也开始遇到这类问题，希望借鉴一些历史经验。
-有一本书《Refactoring: Improving the Design of Existing Code》，作者是Martin Fowler和Kent Beck，最早出版于1999年[^1]。整理一些笔记于此。
+
+逐渐我也开始遇到这类问题，希望借鉴一些历史经验。有一本书《Refactoring: Improving the Design of Existing Code》，作者是Martin Fowler和Kent Beck，最早出版于1999年[^1]。整理一些笔记于此。
 
 [^1]: possible working link [here](https://d1wqtxts1xzle7.cloudfront.net/62290045/Martin_Fowler_-_Refactoring_-_Improving_the_Design_of_Existing-By_www.LearnEngineering.in20200305-13250-1kf3a2o-with-cover-page-v2.pdf?Expires=1633677046&Signature=eTZn3ibiwNbDeNqKr88Ckcmi1jxI2JLYBAgYgRidGaORO3DOv37o~~bP9eL2XP6BCp1xBcgddYrCWuxCm8P4Q-jee-fc6DSh~eUm7o27~sp58t6PjM7A2JAh2rAkukUoVbJ0kUBI1Gdmsop6U7psAw3zjOq2~2TTIkCXMLwLN~yhN229Y4OBvORW5BUPx2ax3Z4SUcn8-oe-kG0~6EkOGXSrmAlzVAABMov6q~bztY0z~GTbOF1fA75SLmh2rW59XY8QRGzA3vcm6UWPr84AjXOWN2bFuMJu01O2lVXz6v0RLQB3dpAwnqcFjuS8wRYM7J6HvYlB9tr4O2tuJamDfA__&Key-Pair-Id=APKAJLOHF5GGSLRBV4ZA)
+
+时刻记得Donald Knuth的话：
+
+> Programmers waste enormous amounts of time thinking about, or worrying about, the speed of noncritical parts of their programs, and these attempts at efficiency actually have a strong negative impact when debugging and maintenance are considered.
+> We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil. Yet we should not pass up our opportunities in that critical 3%. A good programmer will not be lulled into complacency by such reasoning, he will be wise to look carefully at the critical code; but only after that code has been identified.
+> — Donald Knuth
 
 ---
 
@@ -73,7 +80,7 @@ What you need to achieve with refactoring:
 
 ### Changing Interfaces
 
-If a refactoring changes a published interface, you have to retain both the old interface and the new one, at least until your users have had a chance to react to the change. Fortunately, this is not too awkward. You can usually arrange things so that the old interface still works. Try to do this so that the old interface calls the new interface. In this way when you change the name of a method, keep the old one, and just let it call the new one. Don't copy the method body—that leads you down the path to damnation by way of duplicated code. You should also use the deprecation facility in your programming language to mark the code as deprecated. That way your callers will know that something is up. 
+If a refactoring changes a published interface, you have to retain both the old interface and the new one, at least until your users have had a chance to react to the change. Fortunately, this is not too awkward. You can usually arrange things so that the old interface still works. Try to do this so that the old interface calls the new interface. In this way when you change the name of a method, keep the old one, and just let it call the new one. Don't copy the method body—that leads you down the path to damnation by way of duplicated code. You should also use the deprecation facility in your programming language to mark the code as deprecated. That way your callers will know that something is up.
 
 ### When Shouldn't You Refactor?
 
@@ -113,7 +120,7 @@ Remember to always keep the code simple and self-descriptive, such that no extra
 
 ## Mindset
 
-Sometimes, refactoring is more about soft skills and decision making. I watched this interesting video 
+Sometimes, refactoring is more about soft skills and decision making. I watched this interesting video
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/CktRuMALe2A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 

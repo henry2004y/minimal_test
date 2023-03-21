@@ -14,10 +14,8 @@ Stefan Scholl made a nice comparison between different kinds of time-frequency t
 | :-------- | :------ |:--- |:--- |
 | Short-Time Fourier (STFT) / Gabor | poor | no | general purpose |
 | Continuous Wavelet (CWT) | poor, frequency dependent | no | when variable time-frequency resolution required, e.g. audio |
-| Stockwell (S) | poor, frequency dependent | no | when variable time-frequency resolution with a fixed phase
-alignment required, emphasizes higher frequencies |
-| Smoothed Pseudo Wigner-Ville (SPWVD) | good | sometimes | general purpose, when high resolution required and some artifacts
-can be tolerated |
+| Stockwell (S) | poor, frequency dependent | no | when variable time-frequency resolution with a fixed phase alignment required, emphasizes higher frequencies |
+| Smoothed Pseudo Wigner-Ville (SPWVD) | good | sometimes | general purpose, when high resolution required and some artifacts can be tolerated |
 | Wigner-Ville (WVD) | excellent | strong | for simple signals or when artifacts can be tolerated |
 
 ## Short-Time Fourier and Gabor Transform
@@ -54,7 +52,7 @@ and may be dominated by the cross term \\( W_{x_1,x_2} \\), which may have twice
 
 The cross terms occur midway between the auto terms and often have an oscillatory (high-frequency) pattern. A method to reduce cross terms is to suppress the oscillating components by additional low-pass filtering in time and frequency. However, this suppression of cross terms comes at the expense of reduced resolution. This idea of additional cross term suppression leads to the more general formulation of time-frequency transforms called _Cohen’s class_. From Cohen's class many different variants can be deduced, that basically differ in the way the low-pass filter is designed. A prominent one is the _smoothed pseudo Wigner-Ville distribution_ (SPWVD). Other variants such as Choi-Williams, Margenau-Hill or Rihaczek can be found in literature, but often provide very similar results to the SPWVD for practical signals. The SPWVD is defined as the WVD filtered by two separate kernels \\( g(t) \\) and \\( H(f) \\) (need to be chosen prior to the transform), that smooth the WVD in frequency and time:
 \\[
-\mathrm{SPWVD}(t,f) = \int_{t_1}\int_{f_1} g(t-t_1)f(f-f_1)W(t_1,f_1)\mathrm{d}t_1\mathrm{d}f_1
+\mathrm{SPWVD}(t,f) = \int_{t_1}\int_{f_1} g(t-t_1)H(f-f_1)W(t_1,f_1)\mathrm{d}t_1\mathrm{d}f_1
 \\]
 
 Here is the code for comparing the different method using an analytical Doppler signal:
@@ -134,7 +132,7 @@ end
 axs[end].set_xlabel("time [s]", fontsize="large")
 ```
 
-{% include figure image_path="/assets/images/tfd_doppler_compare.png" alt="tfd_doppler" caption="." %}
+{% include figure image_path="/assets/images/tfd_doppler_compare.png" alt="tfd_doppler" caption="Comparison between different time-frequency transforms with an analytical signal of Doppler shift." %}
 
 Notes:
 

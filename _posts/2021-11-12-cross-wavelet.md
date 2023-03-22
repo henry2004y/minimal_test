@@ -82,4 +82,4 @@ where \\( C_x(a,b) \\) and \\( C_y(a,b) \\) denote the continuous wavelet transf
 
 ### Julia
 
-Waiting for magic to happen in [ContinuousWavelets.jl](https://github.com/UCD4IDS/ContinuousWavelets.jl/issues/22).
+Waiting for the magic to happen in [ContinuousWavelets.jl](https://github.com/UCD4IDS/ContinuousWavelets.jl/issues/22).

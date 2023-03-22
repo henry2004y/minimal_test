@@ -5,12 +5,25 @@ tags:
 categories:
   - Blog
 author: Hongyang Zhou
-last_modified_at: 2021-11-18
+last_modified_at: 2023-03-22
 ---
 
 > I hate it when people make simple things complicated, and complicated things impossible.
 
 Let's follow Mark A. Kramer's short course [An Introduction to Field Analysis Techniques: The Power Spectrum and Coherence](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwjb9rHbwqH0AhVtxosKHZggDuYQFnoECAQQAQ&url=https%3A%2F%2Fwww.sfn.org%2F~%2Fmedia%2FSfN%2FDocuments%2FShort%2520Courses%2F2013%2520Short%2520Course%2520II%2FSC2%2520Kramer.ashx&usg=AOvVaw1cR0HUTjm4MKtCBzvwwxDA). I also have a copy in my Google drive.
+
+## DC Offset
+
+For many signals which involve large DC offsets, a raw FFT would often result in a big impulse around frequency 0 Hz, thus masking out the signals of interests with relatively small amplitude.
+
+<img src="http://blog.originlab.com/wp-content/uploads/2015/03/Remove_DC_Offset_Blog_10.png" alt="DC offset">
+
+There are two methods to remove DC offset from the original signal before performing FFT:
+
+* Using FFT High-Pass Filter
+* Subtracting the Mean of Original Signal
+
+Alternatively, you can erase the power in the 0 Hz band after performing FFT.
 
 ## Coherence
 

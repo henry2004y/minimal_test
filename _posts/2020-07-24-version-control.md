@@ -5,7 +5,7 @@ tags:
 categories:
   - Blog
 author: Hongyang Zhou
-last_modified_at: 2021-11-12
+last_modified_at: 2024-04-04
 ---
 
 I haven't considered myself a programmer until very recent years. As a proof of that, 2017/08/28 is the first day I use Git.
@@ -62,6 +62,10 @@ Generally it is better to squeeze small commits before merging, especially in a 
 ## Blaming
 
 `git blame` shows the modification history of a file. There are now built-in GUI supports on GitHub and GitLab.
+
+## Deleting a branch
+
+[How to delete a branch](https://stackoverflow.com/questions/2003505/how-do-i-delete-a-git-branch-locally-and-remotely)
 
 ## Resolving conflicts
 

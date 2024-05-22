@@ -6,7 +6,7 @@ categories:
   - Blog
 date: 2019-10-25
 author: Hongyang Zhou
-last_modified_at: 2022-09-04
+last_modified_at: 2024-05-22
 ---
 
 An animation is simply frames of figures. It is pretty helpful to be proficient at generating a set of figures and combining them into a video.
@@ -66,8 +66,18 @@ I have encountered several issues when using **ffmpeg**:
 
 ### TL;DR
   
-Finally, the following command works for me:
+Finally, the following command works for converting figures into videos:
 
 ```shell
-ffmpeg -r 12 -pattern_type glob -i '*.png' -vcodec libx264 -vf scale=640:-2 -pix_fmt yuv420p pi.mp4
+ffmpeg -r 12 -pattern_type glob -i '*.png' -vcodec libx264 -vf scale=1080:-2 -pix_fmt yuv420p pi.mp4
+```
+
+## Merging videos
+
+Note that this is different from concatenating frames in multiple videos.
+
+From [this thread](https://unix.stackexchange.com/questions/233832/merge-two-video-clips-into-one-placing-them-next-to-each-other):
+
+```shell
+ffmpeg -i left.mp4 -i right.mp4 -filter_complex hstack output.mp4
 ```
